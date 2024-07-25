@@ -13,10 +13,31 @@ def compare_sequence(seq1, seq2):
 
 def main():
     file1 = 'test1.txt'
-    file2 = 'test2'
+    file2 = 'test2.txt'
 
-    seq1 = read_sequence('test1.txt')
-    seq2 = read_sequence('test2.txt')
+
+    custom_file_bool = input('Run test files? (Y/N)')
+
+    if (custom_file_bool == 'Y'):
+        seq1 = read_sequence('test1.txt')
+        seq2 = read_sequence('test2.txt')
+
+    elif  (custom_file_bool == 'y'):   
+        seq1 = read_sequence('test1.txt')
+        seq2 = read_sequence('test2.txt')
+
+    else:
+        print('Using custom files.')
+        print()
+
+        file1 = input('Custome file 1: ')
+        file2 = input('Custome file 2: ')
+
+        seq1 = read_sequence(file1)
+        seq2 = read_sequence(file2)
+
+
+    
 
     print(f'Original lengths: {len(seq1)}, {len(seq2)}')
 
