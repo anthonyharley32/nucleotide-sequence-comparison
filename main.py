@@ -5,7 +5,79 @@ import dna_utils
 
 #TODOS
 #Define a test function to test a file for having valid input
+
+
+
+
 #Define a dictionary for all codon/amino acid pairs
+
+
+codon_code_dictionary = {
+    'AAA' :  'Lysine',
+    'AAC' : 'Asparagine',
+    'AAG' : 'Lysine',
+    'AAT' : 'Asparagine',
+    'ACA' : 'Threonine',
+    'ACC' : 'Threonine',
+    'ACG' : 'Threonine',
+    'ACT' : 'Threonine',
+    'AGA' : 'Arginine',
+    'AGC' : 'Serine',
+    'AGG' : 'Arginine',
+    'AGT' : 'Serine',
+    'ATA' : 'Isoleucine',
+    'ATC' : 'Isoleucine',
+    'ATG' : 'Methionine (Start Codon)',
+    'ATT' : 'Isoleucine',
+    'CAA' : 'Glutamine',
+    'CAC' : 'Histidine',
+    'CAG' : 'Glutamine',
+    'CAT' : 'Histidine',
+    'CCA' : 'Proline',
+    'CCC' : 'Proline',
+    'CCG' : 'Proline',
+    'CCT' : 'Proline',
+    'CGA' : 'Arginine',
+    'CGC' : 'Arginine',
+    'CGG' : 'Arginine',
+    'CGT' : 'Arginine',
+    'CTA' : 'Leucine',
+    'CTC' : 'Leucine',
+    'CTG' : 'Leucine',
+    'CTT' : 'Leucine',
+    'GAA' : 'Glutamic acid',
+    'GAC' : 'Aspartic acid',
+    'GAG' : 'Glutamic acid',
+    'GAT' : 'Aspartic acid',
+    'GCA' : 'Alanine',
+    'GCC' : 'Alanine',
+    'GCG' : 'Alanine',
+    'GCT' : 'Alanine',
+    'GGA' : 'Glycine',
+    'GGC' : 'Glycine',
+    'GGG' : 'Glycine',
+    'GGT' : 'Glycine',
+    'GTA' : 'Valine',
+    'GTC' : 'Valine',
+    'GTG' : 'Valine',
+    'GTT' : 'Valine',
+    'TAA' : 'Stop codon',
+    'TAC' : 'Tyrosine',
+    'TAG' : 'Stop codon',
+    'TAT' : 'Tyrosine',
+    'TCA' : 'Serine',
+    'TCC' : 'Serine',
+    'TCG' : 'Serine',
+    'TCT' : 'Serine',
+    'TGA' : 'Stop codon',
+    'TGC' : 'Cysteine',
+    'TGG' : 'Tryptophan',
+    'TGT' : 'Cysteine',
+    'TTA' : 'Leucine',
+    'TTC' : 'Phenylalanine',
+    'TTG' : 'Leucine',
+    'TTT' : 'Phenylalanine'
+}
 
 
 

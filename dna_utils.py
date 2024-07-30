@@ -1,4 +1,5 @@
 def print_amino_acid_library():
+    print()
     print(f'{"Amino Acid Dictionary":^34}')
     print('-' * 36)
     print(f'{'Amino Acid Name':20}{'Code':^10}{'Codon':6}')
