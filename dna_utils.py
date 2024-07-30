@@ -1,3 +1,6 @@
+import time
+
+
 def print_amino_acid_library():
     print()
     print(f'{"Amino Acid Dictionary":^34}')
@@ -86,3 +89,56 @@ def compare_sequence(seq1, seq2):
     total_chars = len(seq1)
     matches = sum(1 for a, b in zip(seq1, seq2) if a == b)
     return total_chars, matches
+
+def translate_sequence(seq, dict):
+    for i in range(0, len(seq), 3):
+        codon = seq[i : i + 3]
+        print(dict[codon])
+
+def lead():
+    print('Loading.', end = '', flush = True)
+    time.sleep(0.6)
+    print('.', end = '', flush = True)
+    time.sleep(0.3)
+    print('.', end = '', flush = True)
+    time.sleep(0.2)
+    print(flush = True)
+
+def file_set():
+    file1 = 'test1.txt'
+    file2 = 'test2.txt'
+    repeat = True
+    while repeat == True:
+        custom_file_bool = input('Run test files? (Y/N)')
+        if (custom_file_bool.lower() == 'y'):
+            seq1 = read_sequence('test1.txt')
+            seq2 = read_sequence('test2.txt')
+            repeat = False
+        elif (custom_file_bool.lower() == 'n'):
+            print('Using custom files.')
+            print()
+            file1 = input('Custome file 1: ')
+            file2 = input('Custome file 2: ')
+            seq1 = read_sequence(file1)
+            seq2 = read_sequence(file2)
+            repeat = False
+        else:
+            print()
+            print('Invalid entry. Try again.')
+            print()
+
+    return seq1, seq2
+
+def print_sequence_comparison(seq1, seq2):
+    #Pad and print string information and match percentage
+    print()
+    print(f'Original lengths: {len(seq1)}, {len(seq2)}')
+    seq1_padded, seq2_padded = pad_sequence(seq1, seq2)
+    print(f'Padded lengths: {len(seq1_padded)}, {len(seq2_padded)}')
+    total_chars, matches = compare_sequence(seq1_padded, seq2_padded)
+    print(f"Total characters: {total_chars}")
+    print(f"Matching characters: {matches}")
+    print(f"Match percentage: {matches / total_chars * 100:.2f}%")
+    print()
+    input('Press Enter to load Amino Acid Dictionary...')
+    print()
