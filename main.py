@@ -5,7 +5,7 @@ import dna_utils
 
 #TODOS
 #Define a test function to test a file for having valid input
-
+#Build a searchable database of polypeptides and their amino acid sequences
 
 
 
