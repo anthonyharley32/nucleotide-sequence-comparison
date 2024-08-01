@@ -5,6 +5,7 @@ import dna_utils
 
 #TODOS
 #Define a test function to test a file for having valid input
+#Use dictionary to make cases to navigate program functionality
 #Build a searchable database of polypeptides and their amino acid sequences
 
 
@@ -79,23 +80,77 @@ codon_code_dictionary = {
     'TTT' : 'Phenylalanine'
 }
 
+class menu:
+   menu_option_dictionary = {
+    '' : '',
+    '' : ''
+}
+   def __init__(self):
+    self.menus = {
+        'main' : {
+            '1' : 'Print Amino Acid Library',
+            '2' : 'Translate DNA Sequence',
+            '0' : 'Exit'
+        }
+    }
+
+    self.actions = {
+        'main' : {
+            '1' : self.print_library,
+            '2' : self.translate_sequence,
+            '0' : self.exit()
+        }
+    }
+
+    self.current_menu = 'main'
+
+    def display_menu(self):
+       print(f'{self.current_menu.capitalize()} Menu:')
+       for options, description in self.menus[self.current_menu].items():
+          print(f'{options}. {description}')
+
+    def handle_input(self, user_input):
+        if user_input in self.menus[self.current_menu]:
+          self.actions[self.current_menu][user_input]
+        else:
+           print('Invalid input. Please try again.')
+
+
+    def print_library(self):
+        dna_utils.print_amino_acid_library()
+
+    def translate_sequence(self):
+        pass
+
+    def exit(self):
+        print('Goodbye', end = '')
+        for i in range(3):
+            time.sleep(.5)
+            print('.', end = '')
+        exit()
+       
+
+
 
 
 def main():
 
-    #Set files
+    #Main Menu
+    #1) Translate DNA Sequence: Translate a DNA sequence into amino acids.
+    #2) Compare DNA Sequences: Compare two DNA sequences for similarities.
+    #3) Search Amino Acid Database: Search for specific amino acids or polypeptides.
+    #4) Load Custom DNA Sequence: Load a custom DNA sequence from a file.
+    #0) Exit: Quit the program.
+
+    #Set files - FIRMWARE
     seq1, seq2 = dna_utils.file_set()
-
-    #Translate Sequence 
-    dna_utils.translate_sequence(seq1, codon_code_dictionary)
+    print()
 
 
-    dna_utils.print_sequence_comparison(seq1, seq2)
-
-    dna_utils.load()
-
-    #Print Amino Acid Dictionary for user
-    dna_utils.print_amino_acid_library()
+   
+   
+   
+    
     
 
 
