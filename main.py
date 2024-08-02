@@ -5,6 +5,7 @@ import dna_utils
 
 #TODOS
 #Define a test function to test a file for having valid input
+#fix file set for having there be a valid file when using custom file
 #Use dictionary to make cases to navigate program functionality
 #Build a searchable database of polypeptides and their amino acid sequences
 
@@ -80,29 +81,28 @@ codon_code_dictionary = {
     'TTT' : 'Phenylalanine'
 }
 
-class menu:
-   menu_option_dictionary = {
-    '' : '',
-    '' : ''
-}
-   def __init__(self):
-    self.menus = {
-        'main' : {
-            '1' : 'Print Amino Acid Library',
-            '2' : 'Translate DNA Sequence',
-            '0' : 'Exit'
+class Menu:
+   
+    def __init__(self):
+        self.menus = {
+            'main' : {
+                '1' : 'Print Amino Acid Library',
+                '2' : 'Translate DNA Sequence',
+                '3' : 'Compare DNA Sequences',
+                '0' : 'Exit'
+            }
         }
-    }
 
-    self.actions = {
-        'main' : {
-            '1' : self.print_library,
-            '2' : self.translate_sequence,
-            '0' : self.exit()
+        self.actions = {
+            'main' : {
+                '1' : self.print_library,
+                '2' : self.translate_sequence,
+                '3' : self.compare_sequences,
+                '0' : self.exit
+            }
         }
-    }
 
-    self.current_menu = 'main'
+        self.current_menu = 'main'
 
     def display_menu(self):
        print(f'{self.current_menu.capitalize()} Menu:')
@@ -111,16 +111,18 @@ class menu:
 
     def handle_input(self, user_input):
         if user_input in self.menus[self.current_menu]:
-          self.actions[self.current_menu][user_input]
+          self.actions[self.current_menu][user_input]()
         else:
            print('Invalid input. Please try again.')
-
 
     def print_library(self):
         dna_utils.print_amino_acid_library()
 
     def translate_sequence(self):
         pass
+
+    def compare_sequences(self):
+        dna_utils.compare_sequence()
 
     def exit(self):
         print('Goodbye', end = '')
@@ -146,22 +148,13 @@ def main():
     seq1, seq2 = dna_utils.file_set()
     print()
 
+    menu = Menu()
 
+    while True:
+       menu.display_menu()
+       user_input = input('Enter an option: ')
+       menu.handle_input(user_input)
    
-   
-   
-    
-    
-
-
-    
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
