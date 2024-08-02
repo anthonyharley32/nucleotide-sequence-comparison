@@ -118,9 +118,11 @@ class Menu:
     def print_library(self):
         dna_utils.print_amino_acid_library()
 
-    def translate_sequence(self):
+    #FIX_ME
+    def translate_sequence(self):    
         pass
 
+    #FIX_ME
     def compare_sequences(self):
         dna_utils.compare_sequence()
 
