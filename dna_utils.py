@@ -1,4 +1,5 @@
 import time
+import pathlib
 
 
 def print_amino_acid_library():
@@ -105,29 +106,45 @@ def lead():
     print(flush = True)
 
 def file_set():
-    file1 = 'test1.txt'
-    file2 = 'test2.txt'
-    repeat = True
-    while repeat == True:
-        custom_file_bool = input('Run test files? (Y/N)')
+    #path initialized
+    file_path = pathlib.Path('seqs')
+    #Determine file usage
+    
+    while True:
+        custom_file_bool = input('Run test files? (y/n)')
         if (custom_file_bool.lower() == 'y'):
-            seq1 = read_sequence('test1.txt')
-            seq2 = read_sequence('test2.txt')
-            repeat = False
+            seq1 = read_sequence(file_path / 'test1.txt')
+            seq2 = read_sequence(file_path / 'test2.txt')
+
+            return seq1, seq2
         elif (custom_file_bool.lower() == 'n'):
             print('Using custom files.')
             print()
-            file1 = input('Custome file 1: ')
-            file2 = input('Custome file 2: ')
-            seq1 = read_sequence(file1)
-            seq2 = read_sequence(file2)
-            repeat = False
+
+            #file validation
+            while True:
+                file1 = input('Custom file 1: ')
+            
+                if (file_path / file1).exists():
+                    break
+                else:
+                    print('File does not exist.')
+            
+            while True:
+                file2 = input('Custom file 2: ')
+                if (file_path / file2).exists():
+                    break
+                else:
+                    print('File does not exist.')
+            
+            seq1 = read_sequence(file_path / file1)
+            seq2 = read_sequence(file_path/ file2)
+            return seq1, seq2
         else:
             print()
             print('Invalid entry. Try again.')
             print()
 
-    return seq1, seq2
 
 def print_sequence_comparison(seq1, seq2):
     #Pad and print string information and match percentage

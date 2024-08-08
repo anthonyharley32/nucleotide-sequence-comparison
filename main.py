@@ -12,7 +12,7 @@ import dna_utils
 
 
 #Define a dictionary for all codon/amino acid pairs
-
+#add a nucleotide count functionality
 
 codon_code_dictionary = {
     'AAA': ('Lysine', 'K'),
@@ -114,7 +114,9 @@ class Menu:
         if user_input in self.menus[self.current_menu]:
           self.actions[self.current_menu][user_input]()
         else:
-           print('Invalid input. Please try again.')
+           print()
+           print('--Invalid input. Please try again.--')
+           print()
 
     def print_library(self):
         dna_utils.print_amino_acid_library()
@@ -126,7 +128,8 @@ class Menu:
 
     #FIX_ME
     def compare_sequences(self):
-        dna_utils.compare_sequence()
+        seq1, seq2 = dna_utils.file_set()
+        dna_utils.compare_sequence(seq1, seq2)
 
     def exit(self):
         print('Goodbye', end = '')
@@ -147,10 +150,6 @@ def main():
     #3) Search Amino Acid Database: Search for specific amino acids or polypeptides.
     #4) Load Custom DNA Sequence: Load a custom DNA sequence from a file.
     #0) Exit: Quit the program.
-
-    #Set files - FIRMWARE
-    seq1, seq2 = dna_utils.file_set()
-    print()
 
     menu = Menu()
 
