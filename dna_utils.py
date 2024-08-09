@@ -1,6 +1,5 @@
 import time
 import pathlib
-import inspect
 
 
 def print_amino_acid_library():
@@ -91,6 +90,7 @@ def compare_sequence(seq1, seq2):
     total_chars = len(seq1)
     matches = sum(1 for a, b in zip(seq1, seq2) if a == b)
     return total_chars, matches
+    
 
 def translate_sequence(seq, dict):
     for i in range(0, len(seq), 3):
@@ -123,14 +123,11 @@ def file_set(num_vars):
                 #file validation
                 while True:
                     file1 = input('Custom file: ')
-                
                     if (file_path / file1).exists():
-                        break
+                        seq1 = read_sequence(file_path / file1)
+                        return seq1
                     else:
                         print('File does not exist.')
-                
-                seq1 = read_sequence(file_path / file1)
-                return seq1
             else:
                 print()
                 print('Invalid entry. Try again.')
@@ -142,9 +139,6 @@ def file_set(num_vars):
             if (custom_file_bool.lower() == 'y'):
                 seq1 = read_sequence(file_path / 'test1.txt')
                 seq2 = read_sequence(file_path / 'test2.txt')
-                #TEst
-                print(seq1, seq2)
-                #test end
                 return seq1, seq2
             elif (custom_file_bool.lower() == 'n'):
                 print('Using custom files.')
@@ -175,18 +169,3 @@ def file_set(num_vars):
                 print()
     else:
         print('Call file_set() with 1 or 2 args.')
-
-
-def print_sequence_comparison(seq1, seq2):
-    #Pad and print string information and match percentage
-    print()
-    print(f'Original lengths: {len(seq1)}, {len(seq2)}')
-    seq1_padded, seq2_padded = pad_sequence(seq1, seq2)
-    print(f'Padded lengths: {len(seq1_padded)}, {len(seq2_padded)}')
-    total_chars, matches = compare_sequence(seq1_padded, seq2_padded)
-    print(f"Total characters: {total_chars}")
-    print(f"Matching characters: {matches}")
-    print(f"Match percentage: {matches / total_chars * 100:.2f}%")
-    print()
-    input('Press Enter to load Amino Acid Dictionary...')
-    print()

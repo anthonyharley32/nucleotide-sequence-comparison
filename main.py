@@ -126,10 +126,19 @@ class Menu:
         #dna_utils.translate_sequence(seq)
         pass   
 
-    #FIX_ME
+
     def compare_sequences(self):
         seq1, seq2 = dna_utils.file_set(2)
-        dna_utils.compare_sequence(seq1, seq2)
+        #Pad and print string information and match percentage
+        print()
+        print(f'Original lengths: {len(seq1)}, {len(seq2)}')
+        seq1_padded, seq2_padded = dna_utils.pad_sequence(seq1, seq2)
+        print(f'Padded lengths: {len(seq1_padded)}, {len(seq2_padded)}')
+        total_chars, matches = dna_utils.compare_sequence(seq1_padded, seq2_padded)
+        print(f"Total characters: {total_chars}")
+        print(f"Matching characters: {matches}")
+        print(f"Match percentage: {matches / total_chars * 100:.2f}%")
+
 
     def exit(self):
         print('Goodbye', end = '')
