@@ -128,7 +128,7 @@ class Menu:
 
     #FIX_ME
     def compare_sequences(self):
-        seq1, seq2 = dna_utils.file_set()
+        seq1, seq2 = dna_utils.file_set(2)
         dna_utils.compare_sequence(seq1, seq2)
 
     def exit(self):

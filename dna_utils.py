@@ -1,5 +1,6 @@
 import time
 import pathlib
+import inspect
 
 
 def print_amino_acid_library():
@@ -105,45 +106,75 @@ def lead():
     time.sleep(0.2)
     print(flush = True)
 
-def file_set():
+def file_set(num_vars):
     #path initialized
     file_path = pathlib.Path('seqs')
     #Determine file usage
-    
-    while True:
-        custom_file_bool = input('Run test files? (y/n)')
-        if (custom_file_bool.lower() == 'y'):
-            seq1 = read_sequence(file_path / 'test1.txt')
-            seq2 = read_sequence(file_path / 'test2.txt')
+    if num_vars == 1:
+        while True:
+            custom_file_bool = input('Run test file 1? (y/n)')
+            if (custom_file_bool.lower() == 'y'):
+                seq1 = read_sequence(file_path / 'test1.txt')
+                return seq1
+            elif (custom_file_bool.lower() == 'n'):
+                print('Using custom file.')
+                print()
 
-            return seq1, seq2
-        elif (custom_file_bool.lower() == 'n'):
-            print('Using custom files.')
-            print()
+                #file validation
+                while True:
+                    file1 = input('Custom file: ')
+                
+                    if (file_path / file1).exists():
+                        break
+                    else:
+                        print('File does not exist.')
+                
+                seq1 = read_sequence(file_path / file1)
+                return seq1
+            else:
+                print()
+                print('Invalid entry. Try again.')
+                print()
+                
+    elif num_vars == 2:
+        while True:
+            custom_file_bool = input('Run test files? (y/n)')
+            if (custom_file_bool.lower() == 'y'):
+                seq1 = read_sequence(file_path / 'test1.txt')
+                seq2 = read_sequence(file_path / 'test2.txt')
+                #TEst
+                print(seq1, seq2)
+                #test end
+                return seq1, seq2
+            elif (custom_file_bool.lower() == 'n'):
+                print('Using custom files.')
+                print()
 
-            #file validation
-            while True:
-                file1 = input('Custom file 1: ')
-            
-                if (file_path / file1).exists():
-                    break
-                else:
-                    print('File does not exist.')
-            
-            while True:
-                file2 = input('Custom file 2: ')
-                if (file_path / file2).exists():
-                    break
-                else:
-                    print('File does not exist.')
-            
-            seq1 = read_sequence(file_path / file1)
-            seq2 = read_sequence(file_path/ file2)
-            return seq1, seq2
-        else:
-            print()
-            print('Invalid entry. Try again.')
-            print()
+                #file validation
+                while True:
+                    file1 = input('Custom file 1: ')
+                
+                    if (file_path / file1).exists():
+                        break
+                    else:
+                        print('File does not exist.')
+                
+                while True:
+                    file2 = input('Custom file 2: ')
+                    if (file_path / file2).exists():
+                        break
+                    else:
+                        print('File does not exist.')
+                
+                seq1 = read_sequence(file_path / file1)
+                seq2 = read_sequence(file_path/ file2)
+                return seq1, seq2
+            else:
+                print()
+                print('Invalid entry. Try again.')
+                print()
+    else:
+        print('Call file_set() with 1 or 2 args.')
 
 
 def print_sequence_comparison(seq1, seq2):
