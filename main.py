@@ -87,8 +87,9 @@ class Menu:
         self.menus = {
             'main' : {
                 '1' : 'Print Amino Acid Library',
-                '2' : 'Translate DNA Sequence',
-                '3' : 'Compare DNA Sequences',
+                '2' : 'Print Accessible Proteins',
+                '3' : 'Translate DNA Sequence',
+                '4' : 'Compare DNA Sequences',
                 '0' : 'Exit'
             }
 
@@ -97,8 +98,9 @@ class Menu:
         self.actions = {
             'main' : {
                 '1' : self.print_library,
-                '2' : self.translate_sequence,
-                '3' : self.compare_sequences,
+                '2' : self.print_proteins,
+                '3' : self.translate_sequence,
+                '4' : self.compare_sequences,
                 '0' : self.exit
             }
         }
@@ -121,7 +123,9 @@ class Menu:
     def print_library(self):
         dna_utils.print_amino_acid_library()
 
-    #FIX_ME
+    def print_proteins(self):
+        dna_utils.print_protein_library()
+
     def translate_sequence(self):
         seq = dna_utils.file_set(1)
         dna_utils.translate_sequence(seq, codon_code_dictionary)
@@ -164,6 +168,7 @@ def main():
     menu = Menu()
 
     while True:
+       print()
        menu.display_menu()
        user_input = input('Enter an option: ')
        menu.handle_input(user_input)

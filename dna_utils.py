@@ -3,6 +3,8 @@ import pathlib
 
 
 def print_amino_acid_library():
+
+
     print()
     print(f'{"Amino Acid Dictionary":^34}')
     print('-' * 36)
@@ -73,6 +75,14 @@ def print_amino_acid_library():
     print(f'{'':20}{'':^10}{'TAG':6}')
     print(f'{'':20}{'':^10}{'TGA':6}')
 
+def print_protein_library():
+    print()
+    file_path = pathlib.Path('seqs')
+    num_proteins = len(list(file_path.iterdir()))
+    print(f'Available Protein Count: {num_proteins}')
+    print('-'*36)
+    for protein in file_path.iterdir():
+        print(protein.name)
 
 def list_sequence(seq):
     for nucleotide in seq:
