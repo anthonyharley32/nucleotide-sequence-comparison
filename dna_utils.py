@@ -95,7 +95,8 @@ def compare_sequence(seq1, seq2):
 def translate_sequence(seq, dict):
     for i in range(0, len(seq), 3):
         codon = seq[i : i + 3]
-        print(dict[codon])
+        print(dict[codon][1], end='')
+        print()
 
 def lead():
     print('Loading.', end = '', flush = True)

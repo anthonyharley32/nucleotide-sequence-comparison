@@ -123,8 +123,9 @@ class Menu:
 
     #FIX_ME
     def translate_sequence(self):
-        #dna_utils.translate_sequence(seq)
-        pass   
+        seq = dna_utils.file_set(1)
+        dna_utils.translate_sequence(seq, codon_code_dictionary)
+        print()
 
 
     def compare_sequences(self):
