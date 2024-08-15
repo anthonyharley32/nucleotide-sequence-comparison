@@ -104,7 +104,11 @@ def compare_sequence(seq1, seq2):
 def analyze_sequence(seq):
     # Calculate the length of the sequence
     seq_length = len(seq)
-    
+    #count the number of A, T, G, and C
+    a_count = seq.count('A')
+    t_count = seq.count('T')
+    g_count = seq.count('G')
+    c_count = seq.count('C')
     # Count the occurrences of G and C
     gc_count = seq.count('G') + seq.count('C')
     
@@ -112,8 +116,13 @@ def analyze_sequence(seq):
     gc_content = (gc_count / seq_length) * 100
     
     # Print the results
+    print()
+    print('Sequence Analysis:')
     print(f"Sequence length: {seq_length} nucleotides")
-    print(f"GC count: {gc_count}")
+    print(f"A count: {a_count}")
+    print(f"T count: {t_count}")
+    print(f"G count: {g_count}")
+    print(f"C count: {c_count}")
     print(f"GC content: {gc_content:.2f}%")
 
 

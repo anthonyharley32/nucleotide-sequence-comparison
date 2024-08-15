@@ -8,7 +8,10 @@ import dna_utils
 #fix file set for having there be a valid file when using custom file
 #Use dictionary to make cases to navigate program functionality
 #Build a searchable database of polypeptides and their amino acid sequences
-#Display GC content
+#Maybe cluster using GC content to show health of proteins with heigher and lower GC content
+#complementary DNA sequence function
+#visualize GC content in analyze function
+#stop codon identification or chance of occurence in shift error function
 
 
 
