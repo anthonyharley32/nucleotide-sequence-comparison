@@ -1,6 +1,6 @@
 import time
 import pathlib
-
+import readline
 
 def print_amino_acid_library():
 
@@ -121,8 +121,18 @@ def lead():
     print(flush = True)
 
 def file_set(num_vars):
+    from prompt_toolkit import prompt
+    from prompt_toolkit.completion import WordCompleter
+
+    
+
     #path initialized
     file_path = pathlib.Path('seqs')
+
+    #WordCompleter initialized
+    available_files = [f.name for f in file_path.glob('*') if f.is_file()]
+    file_completer = WordCompleter(available_files, ignore_case=True)
+
     #Determine file usage
     if num_vars == 1:
         while True:
@@ -134,9 +144,12 @@ def file_set(num_vars):
                 print('Using custom file.')
                 print()
 
-                #file validation
+                #custom file validation
                 while True:
-                    file1 = input('Custom file: ')
+                    #autocomplete input
+                    
+                    file1 = prompt('Custom file: ', completer=file_completer)
+                    #autocomplete input end
                     if (file_path / file1).exists():
                         seq1 = read_sequence(file_path / file1)
                         return seq1
@@ -158,9 +171,9 @@ def file_set(num_vars):
                 print('Using custom files.')
                 print()
 
-                #file validation
+                #custom file validation
                 while True:
-                    file1 = input('Custom file 1: ')
+                    file1 = prompt('Custom file 1: ', completer=file_completer)
                 
                     if (file_path / file1).exists():
                         break
@@ -168,7 +181,7 @@ def file_set(num_vars):
                         print('File does not exist.')
                 
                 while True:
-                    file2 = input('Custom file 2: ')
+                    file2 = prompt('Custom file 2: ', completer=file_completer)
                     if (file_path / file2).exists():
                         break
                     else:
