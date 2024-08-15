@@ -8,6 +8,7 @@ import dna_utils
 #fix file set for having there be a valid file when using custom file
 #Use dictionary to make cases to navigate program functionality
 #Build a searchable database of polypeptides and their amino acid sequences
+#Display GC content
 
 
 
@@ -88,8 +89,9 @@ class Menu:
             'main' : {
                 '1' : 'Print Amino Acid Library',
                 '2' : 'Print Accessible Proteins',
-                '3' : 'Translate DNA Sequence',
-                '4' : 'Compare DNA Sequences',
+                '3' : 'Analyze DNA Sequece',
+                '4' : 'Translate DNA Sequence',
+                '5' : 'Compare DNA Sequences',
                 '0' : 'Exit'
             }
 
@@ -99,8 +101,9 @@ class Menu:
             'main' : {
                 '1' : self.print_library,
                 '2' : self.print_proteins,
-                '3' : self.translate_sequence,
-                '4' : self.compare_sequences,
+                '3' : self.analyze_sequence,
+                '4' : self.translate_sequence,
+                '5' : self.compare_sequences,
                 '0' : self.exit
             }
         }
@@ -125,6 +128,10 @@ class Menu:
 
     def print_proteins(self):
         dna_utils.print_protein_library()
+
+    def analyze_sequence(self):
+        seq = dna_utils.file_set(1)
+        dna_utils.analyze_sequence(seq)
 
     def translate_sequence(self):
         seq = dna_utils.file_set(1)

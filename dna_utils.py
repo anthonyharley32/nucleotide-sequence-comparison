@@ -101,6 +101,21 @@ def compare_sequence(seq1, seq2):
     matches = sum(1 for a, b in zip(seq1, seq2) if a == b)
     return total_chars, matches
     
+def analyze_sequence(seq):
+    # Calculate the length of the sequence
+    seq_length = len(seq)
+    
+    # Count the occurrences of G and C
+    gc_count = seq.count('G') + seq.count('C')
+    
+    # Calculate GC content as a percentage
+    gc_content = (gc_count / seq_length) * 100
+    
+    # Print the results
+    print(f"Sequence length: {seq_length} nucleotides")
+    print(f"GC count: {gc_count}")
+    print(f"GC content: {gc_content:.2f}%")
+
 
 def translate_sequence(seq, dict):
     if len(seq) % 3 != 0:
